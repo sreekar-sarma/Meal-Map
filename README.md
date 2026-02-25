@@ -42,5 +42,5 @@ Goal: Reduce food waste, fight hunger, and promote sustainability
 ![Donation Form](screenshots/donate.png)
 
 ### 🗺️ Receiver
-![Receiver](screenshots/receiver.png)
+![Receiver](screenshots/receiver .png)
 
