@@ -14,10 +14,13 @@ const userschema = mongo.Schema({
         type:String
     },
     email:{
-        type:String
+        type:String,
+        required:true,
+        unique:true,
     },
     password : {
         type:String,
+        required:true,
     },
     confirmpassword : {
         type:String
