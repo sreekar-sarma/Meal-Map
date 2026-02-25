@@ -1,0 +1,108 @@
+body{
+    margin: 0;
+    height: 80vh;
+}
+video{
+    height: 100vh;
+
+    width: 100%;
+    max-width: 500px;
+    object-fit: cover;
+}
+.container{
+    display: flex;
+    flex-direction: row;
+    border: 1px solid black;
+    max-width: none;
+    
+}
+
+.minicon{
+    border: 1px solid green;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.title{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+.title img{
+    width: 50px;
+    height: 50px;
+    border-radius: 25px;
+    margin-right: 5px;
+}
+
+.form{
+    border: 2px solid rgb(87, 83, 83);
+    text-align: center;
+    width: 400px;
+    margin-top: 50px;
+    height: 68vh;
+    border-radius: 30px;
+    transition: all 0.3s ease;
+}
+.form:hover{
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+.form h2{
+    margin-top: 20px;
+   font-size: 2rem;
+}
+.form input{
+    margin: 15px 10px;
+    width: 300px;
+    height: 50px;
+    border-radius: 10px;
+    border: none;
+    background-color: rgb(221, 239, 255);
+    text-align: center;
+    transition: box-shadow 0.3s ease;
+
+}
+
+.form .password{
+    margin-bottom: 20px;
+}
+
+.registernote {
+  text-decoration-line: none;
+  margin-bottom: 40px;
+  color: rgb(21, 74, 15);
+ 
+}
+.form button{
+    border-radius: 20px;
+    border: none;
+    width: 150px;
+    height: 50px;
+    background-color: rgba(8, 117, 117, 0.571);
+    color: rgb(0, 0, 0);
+    font-weight: bold;
+    font-size: 1.5rem;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    cursor: pointer;
+    box-shadow: 2px 2px 2px black;
+    margin-bottom:10px;
+    margin-top: 10px;
+    
+    
+}
+button:hover{
+    box-shadow: 3px 3px 3px black;
+    opacity: 0.8;
+}
+
+.error{
+    font-weight: bold;
+    font-size: 1rem;
+}
+
+input:hover{
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}

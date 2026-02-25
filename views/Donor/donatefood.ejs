@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>MealMap - Donate Food</title>
+    <link rel="stylesheet" href="styles/Donor/donatehome.css" />
+    <link rel="icon" type="image/png" href="assets/logo.jpg" />
+  </head>
+  <body>
+    <div class="app">
+      <nav class="navbar">
+        <div class="nav-logo">
+          <img src="assets/logo.jpg" alt="Foodkart logo" />MealMap
+        </div>
+        <ul class="nav-links">
+          <li><a href="donor">Home</a></li>
+          <li><a href="#" class="active">Donate Food</a></li>
+          <li><a href="donorhistory">My Donations</a></li>
+        </ul>
+      </nav>
+      <div class="donate-form-container">
+        <h2>Donate Food</h2>
+
+
+
+        <form class="donate-form" action="/submitdonation" method="post">
+
+            <div class="form-group">
+                <label for="name" class="dhead">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter Name Of The Food" />
+              </div>
+
+          <div class="form-group">
+            <label for="image" class="dhead">Upload Image</label>
+            <input type="file" id="image"  />
+            
+          </div>
+
+          <div class="form-group">
+            <label for="quantity" class="dhead">Quantity(approx) (kg)</label>
+            <input type="text" id="quantity" name="quantity" placeholder="Enter quantity or use image estimation" value="5" />
+          </div>
+
+          <div class="form-group">
+            <label class="dhead">Food Type</label>
+            <div class="radio-group">
+              <label>
+                <input type="radio" name="food-type" value="veg" checked />
+                Vegetarian
+              </label>
+              <label>
+                <input type="radio" name="food-type" value="non-veg" />
+                Non-Vegetarian
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="dhead">Perishability</label>
+            <div class="radio-group">
+              <label>
+                <input
+                  type="radio"
+                  name="perishability"
+                  value="perishable"
+                  checked
+                />
+                Perishable
+              </label>
+              <label>
+                <input
+                  type="radio"
+                  name="perishability"
+                  value="non-perishable"
+                />
+                Non-Perishable
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="expiry" class="dhead">Pickup Deadline</label>
+            <input type="datetime-local" id="expiry" required />
+          </div>
+
+          <div class="form-group">
+            <label for="location" class="dhead">Location</label>
+            <input type="text" id="location" name="locationText" placeholder="Enter location or use GPS" required>
+            
+            <input type="hidden" id="latitude" name="latitude">
+            <input type="hidden" id="longitude" name="longitude">
+          
+            <button type="button" onclick="getLocation()" class="getlocation">Use GPS</button>
+            <button type="button" onclick="geocodeAddress()" class="getlocation">Find Coordinates</button>
+          </div>
+          
+          <% if (message) { %>
+            <p  class="msgsuc"><%= message %></p>
+          <% } %>
+
+          <button type="submit" class="submit-button">Submit Donation</button>
+        </form>
+
+       
+
+      </div>
+    </div>
+
+
+    <script>
+        function getLocation() {
+          if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
+          } else {
+            alert("Geolocation is not supported.");
+          }
+        }
+      
+        function successCallback(position) {
+          const lat = position.coords.latitude;
+          const lng = position.coords.longitude;
+          document.getElementById('latitude').value = lat;
+          document.getElementById('longitude').value = lng;
+          document.getElementById('location').value = `Lat: ${lat.toFixed(5)}, Lng: ${lng.toFixed(5)}`;
+        }
+      
+        function errorCallback() {
+          alert("Could not get GPS location.");
+        }
+      
+    function geocodeAddress() {
+    const location = document.getElementById("location").value;
+    const result = document.getElementById("result");
+
+    if (!location) {
+        alert('Please enter an location...');
+        return;
+    }
+
+    fetch(`https://nominatim.openstreetmap.org/search?format=json&q=${encodeURIComponent(location)}`)
+        .then(response => response.json())
+        .then(data => {
+            if (data && data.length > 0) {
+                const lat = data[0].lat;
+                const lon = data[0].lon;
+                document.getElementById('latitude').value = lat;
+                document.getElementById('longitude').value = lon;
+               alert('location fetched...');
+            } else {
+                alert('location not found...');
+            }
+        })
+        .catch(error => {
+            alert('Error occured...');;
+        });
+}
+      </script>
+      
+    
+      
+
+
+  </body>
+</html>

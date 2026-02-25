@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>MealMap Registration</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="styles/User/register.css">
+  <link rel="icon" type="image/png" href="assets/logo.jpg" />
+
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+</head>
+<body>
+  <div class="main_container">
+    
+      <video src="assets/User/form_video.mp4" autoplay loop preload="auto" ></video>
+
+  <div class="container">
+
+    <div class="titlecon">
+      <img src="assets/logo.jpg" alt="logo" width="50px" height="50px">
+      <h1 id="title">MealMap</h1>
+    </div>
+   
+    <p id="para">Register Now to Donate or Receive Surplus Food in Real-Time</p>
+    <br>
+    <form action="/register" method="post">
+      
+      <select id="user-role" name="user_role" required>
+        <option value="" disabled selected hidden>Select your role</option>
+        <optgroup label="Donor">
+          <option value="donor:restaurant">Restaurant</option>
+          <option value="donor:individual">Individual (Donor)</option>
+          <option value="donor:organization">Organization</option>
+        </optgroup>
+        <optgroup label="Receiver">
+          <option value="receiver:ngo">NGO</option>
+          <option value="receiver:volunteer">Volunteer</option>
+          <option value="receiver:individual">Individual (Receiver)</option>
+        </optgroup>
+      </select>
+      
+
+      <label for="name">
+        <input type="text" id="fullname" name="fullname" placeholder="FullName" required>
+      </label>
+      
+
+      <label for="email">
+        <input type="email" id="email" name="email" placeholder="Email" required>
+      </label>
+      
+
+      <label for="password" >
+        <input type="password" id="password" name="password" placeholder="Create-password" required>
+      </label>
+
+      <label for="confirm-password" >
+        <input type="password" id="confirm-password" name="confirmpassword" placeholder="confirm-password" required>
+      </label>
+
+      <label for="phone"> 
+        <input type="tel" id="number" name="number" placeholder="Mobile number" required>
+      </label>
+
+      <label for="location">
+        <input type="text" id="location" name="location" placeholder="City or Area" required>
+      </label>
+
+      
+     <p id="note">* For NGOs or Organizations, include registration info below</p>
+
+      <label for="org-name">
+        <input type="text" id="org-name" name="org_name" placeholder="ORG/NGO Name(optional)">
+
+      </label>
+
+      <% if (error) { %>
+        <p style="color: red;" class="error"><%= error %></p>
+      <% } %>
+    
+      <button type="submit" id="register">Register</button>
+      or
+      <button type="button" id="google">Continue with google</button>
+    </form>
+   
+
+    <a class="registernote" href="signin"><p>Already an user? Sign In</p></a>
+  </div>
+
+  </div>
+  
+
+  <script>
+    window.onload = function () {
+      google.accounts.id.initialize({
+        client_id: "338940384707-enrofb579vds6olfcd14ecbhn3emqu00.apps.googleusercontent.com", // replace this
+        callback: handleCredentialResponse
+      });
+  
+      document.getElementById("google").addEventListener("click", function () {
+        google.accounts.id.prompt(); // show Google sign-in popup
+      });
+    };
+  
+    function handleCredentialResponse(response) {
+      console.log("Encoded JWT ID token: " + response.credential);
+      // 👉 You can send this token to your backend to verify the user
+    }
+  </script>
+  
+
+</body>
+</html>

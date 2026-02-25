@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MealMap</title>
+    <link rel="icon" type="image/png" href="assets/logo.jpg" />
+    <link rel="stylesheet" href="styles/Home/home.css">
+</head>
+<body>
+    
+ <!-- Navigation -->
+ <nav>
+    <div>
+      <div>
+        <div>
+          <img src="assets/logo.jpg" alt="Logo Icon" width="50" height="50">
+          <h1>MealMap</h1>
+        </div>
+        <div class="leftitems">
+          <a href="#" class="top">Home</a>
+          <a href="register" class="top">Donate</a>
+           <a href="register" class="top">Receive</a>
+          <a href="#contact" class="top">Contact</a>
+          <a href="signin" class="top">Login</a>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Slider -->
+  <div class="slider-container">
+    <div class="slider">
+        <div class="slide" id="slide1">
+            <div class="slide-content">
+                <h2>Together We Can Make a Difference</h2>
+                <p>Join our mission to end hunger in communities</p>
+            </div>
+        </div>
+        <div class="slide" id="slide2">
+            <div class="slide-content">
+                <h2>Share Food, Share Love</h2>
+                <p>Every donation makes a difference in someone's life</p>
+            </div>
+        </div>
+        <div class="slide" id="slide3">
+            <div class="slide-content">
+                <h2>Fighting Hunger, Spreading Hope</h2>
+                <p>Building stronger communities through food sharing</p>
+            </div>
+        </div>
+    </div>
+    
+    <div class="progress-bar">
+        <div class="progress"></div>
+    </div>
+
+    <div class="slider-nav">
+        <a href="#"></a>
+        <a href="#"></a>
+        <a href="#"></a>
+    </div>
+
+  
+</div>
+  
+
+  <!-- Key Features -->
+  <section class="fade-in-section">
+    <h2>Key Features</h2>
+    <div >
+      <div class="keyfeature">
+        <img src="assets/homepics/substain.png" alt="Sustainable Icon">
+        <h3>Sustainable</h3>
+        <p>Reducing food waste for a better environment</p>
+      </div>
+      <div class="keyfeature">
+        <img src="assets/homepics/efficeint.png" alt="Efficient Icon">
+        <h3>Efficient</h3>
+        <p>Quick and easy donation process</p>
+      </div>
+      <div class="keyfeature">
+        <img src="assets/homepics/transperant.png" alt="Transparent Icon">
+        <h3>Transparent</h3>
+        <p>Track your impact in real-time</p>
+      </div>
+      <div class="keyfeature">
+        <img src="assets/homepics/verified.png" alt="Verified Icon">
+        <h3>Verified</h3>
+        <p>Trusted network of partners</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- How it Works -->
+  <section class="fade-in-section">
+    <h2>How it Works</h2>
+    <div>
+      <div>
+        <span>1</span>
+        <h3>Register</h3>
+        <p>Create an account as a donor or recipient</p>
+      </div>
+      <div>
+        <span>2</span>
+        <h3>Connect</h3>
+        <p>Post available food or find donations nearby</p>
+      </div>
+      <div>
+        <span>3</span>
+        <h3>Make an Impact</h3>
+        <p>Complete the donation and track your contribution</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Impact Section -->
+  <section class="fade-in-section">
+    <h2>Our Impact</h2>
+    <div>
+      <div>
+        <img src="assets/homepics/user.png" alt="Users Icon">
+        <h3>10,000+</h3>
+        <p>People Fed Monthly</p>
+      </div>
+      <div>
+        <img src="assets/homepics/calendar.jpg" alt="Calendar Icon">
+        <h3>5,000 kg</h3>
+        <p>Food Saved Monthly</p>
+      </div>
+      <div>
+        <img src="assets/homepics/heart.png" alt="Heart Icon">
+        <h3>500+</h3>
+        <p>Active Donors</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="fade-in-section">
+    <h2>Contact Us</h2>
+    <div>
+      <div>
+        <h3>Get in Touch</h3>
+        <p>📍123 food street , Hyderabad</p>
+        <p>📧 <a href="mailto:contact@foodshare.com">contact@foodshare.com</a></p>
+        <p>📞 <a href="tel:+1234567890">+91 7483742948</a></p>
+      </div>
+      <form>
+        <input type="text" placeholder="Your Name" required>
+        <input type="email" placeholder="Your Email" required>
+        <textarea placeholder="Your Message" required></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div>
+      <img src="assets/homepics/heart.png" alt="Heart Icon" width="32" height="32">
+      <span>FoodShare</span>
+      <p>© 2025 FoodShare. All rights reserved.</p>
+    </div>
+  </footer>
+
+
+  <script>
+    let slides = document.querySelectorAll('.slide');
+    let currentSlide = 0;
+  
+    function showNextSlide() {
+      slides[currentSlide].classList.remove('active');
+      currentSlide = (currentSlide + 1) % slides.length;
+      slides[currentSlide].classList.add('active');
+    }
+  
+    setInterval(showNextSlide, 3000); // Change slide every 5 seconds
+
+    const faders = document.querySelectorAll('.fade-in-section');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('visible');
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.1
+});
+
+faders.forEach(section => {
+  observer.observe(section);
+});
+  </script>
+  
+
+</body>
+</html>
