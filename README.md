@@ -1,5 +1,3 @@
-# MealMap
-
 🍽️ Project Title: 
 MealMap
 
